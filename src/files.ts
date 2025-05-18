@@ -18,6 +18,8 @@ export const performFilesBackup = async () => {
       throw new Error('FILES_BACKUP_URL is not set in environment variables.');
     }
 
+    console.log('Starting files backup with URL: %s', fileUrl);
+
     const backupDir = path.resolve(__dirname, '../backups');
     if (!fs.existsSync(backupDir)) {
       fs.mkdirSync(backupDir, { recursive: true });
