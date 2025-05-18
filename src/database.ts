@@ -28,7 +28,7 @@ const execPromise = promisify(exec);
   
   try {
     // Run pg_dump with gzip compression using the full database URL
-    const { stdout, stderr } = await execPromise(`${process.env.PG_DUMP_PATH}pg_dump --dbname="${databaseUrl}" -F p | gzip > "${filePath}"`);
+    const { stdout, stderr } = await execPromise(`${process.env.PG_DUMP_PATH ?? ""}pg_dump --dbname="${databaseUrl}" -F p | gzip > "${filePath}"`);
     
     // Check if there was any stderr output (which might indicate an error)
     if (stderr && stderr.trim() !== '') {
